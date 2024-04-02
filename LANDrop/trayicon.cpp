@@ -41,6 +41,7 @@
 #include "selectfilesdialog.h"
 #include "settings.h"
 #include "trayicon.h"
+#include "cli.h"
 
 TrayIcon::TrayIcon(QObject *parent) : QSystemTrayIcon(parent)
 {
@@ -85,9 +86,12 @@ TrayIcon::TrayIcon(QObject *parent) : QSystemTrayIcon(parent)
 
     discoveryService.start(server.port());
 
-    QTimer::singleShot(0, this, [this]() {
-        showMessage(QApplication::applicationName(), QApplication::applicationName() + tr(" is launched here."));
-    });
+    auto& parser = GetCliParser();
+    auto& argDefs = GetCliArgDefs();
+    if (!parser.isSet(argDefs.noStartupNotification))
+        QTimer::singleShot(0, this, [this]() {
+            showMessage(QApplication::applicationName(), QApplication::applicationName() + tr(" is launched here."));
+        });
 }
 
 void TrayIcon::sendActionTriggered()

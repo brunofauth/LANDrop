@@ -1,6 +1,6 @@
 QT += core gui widgets network
 
-CONFIG += c++11
+CONFIG += c++17
 
 SOURCES += \
     aboutdialog.cpp \
@@ -16,6 +16,7 @@ SOURCES += \
     sendtodialog.cpp \
     settings.cpp \
     settingsdialog.cpp \
+    cli.cpp \
     trayicon.cpp
 
 HEADERS += \
@@ -31,6 +32,7 @@ HEADERS += \
     sendtodialog.h \
     settings.h \
     settingsdialog.h \
+    cli.h \
     trayicon.h
 
 FORMS += \

@@ -37,6 +37,8 @@
 #include <QTranslator>
 
 #include "trayicon.h"
+#include "cli.h"
+
 
 int main(int argc, char *argv[])
 {
@@ -52,6 +54,9 @@ int main(int argc, char *argv[])
     QTranslator appTranslator;
     appTranslator.load(a.applicationName() + '.' + QLocale::system().name(), ":/locales", "", ".qm");
     a.installTranslator(&appTranslator);
+
+    auto& parser = MakeCliParser();
+    parser.parse(a.arguments());
 
     try {
         if (!QSystemTrayIcon::isSystemTrayAvailable())

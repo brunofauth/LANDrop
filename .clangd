@@ -1,0 +1,10 @@
+CompileFlags: # Tweak the parse settings, example directory given to show format
+  Add:
+    - "-I./LANDrop"
+    - "-I/usr/include/qt"
+    - "-I/usr/include/qt/QtCore"
+    - "-I/usr/include/qt/QtGui"
+    - "-I/usr/include/qt/QtNetwork"
+    - "-I/usr/include/qt/QtWidgets"
+    - "-I/usr/lib/qt/mkspecs/linux-g++"
+    - "-I/usr/local/include"
