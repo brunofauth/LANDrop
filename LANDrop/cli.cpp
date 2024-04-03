@@ -6,7 +6,7 @@ static std::optional<QCommandLineParser> parser = std::nullopt;
 static std::optional<CliArguments> argDefs = std::nullopt;
 
 
-QCommandLineParser& MakeCliParser() {
+QCommandLineParser& MakeCliParser(const QCoreApplication& app) {
     argDefs = CliArguments {
         .noStartupNotification = QCommandLineOption(
             QStringList() << "N" << "no-startup-notification",
@@ -15,9 +15,18 @@ QCommandLineParser& MakeCliParser() {
 
     parser.emplace();
     parser->setApplicationDescription("Test helper");
-    parser->addHelpOption();
-    parser->addVersionOption();
+    auto optHelp = parser->addHelpOption();
+    auto optVersion = parser->addVersionOption();
     parser->addOption(argDefs->noStartupNotification);
+    parser->parse(app.arguments());
+
+    if (parser->isSet(optHelp)) {
+        parser->showHelp();
+    }
+
+    if (parser->isSet(optVersion)) {
+        parser->showVersion();
+    }
 
     return *parser;
 }

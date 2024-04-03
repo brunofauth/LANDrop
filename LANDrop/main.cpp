@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     a.setOrganizationName("LANDrop");
     a.setOrganizationDomain("landrop.app");
     a.setApplicationName("LANDrop");
-    a.setApplicationVersion("0.4.0");
+    a.setApplicationVersion("0.4.0-1");
 
     a.setQuitOnLastWindowClosed(false);
 
@@ -55,8 +55,7 @@ int main(int argc, char *argv[])
     appTranslator.load(a.applicationName() + '.' + QLocale::system().name(), ":/locales", "", ".qm");
     a.installTranslator(&appTranslator);
 
-    auto& parser = MakeCliParser();
-    parser.parse(a.arguments());
+    MakeCliParser(a);
 
     try {
         if (!QSystemTrayIcon::isSystemTrayAvailable())
