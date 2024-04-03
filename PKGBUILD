@@ -1,6 +1,6 @@
 # Maintainer: Bruno Fauth // b_v_f_a_u_t_h___a_t___h_o_t_m_a_i_l___d_o_t___c_o_m
 pkgname=landrop-no-notif-git
-pkgver=0.4.0-1
+pkgver=0.4.0_1
 pkgrel=1
 pkgdesc="My fork of LANDrop, adding support for CLI args."
 arch=('x86_64')
@@ -26,7 +26,7 @@ sha512sums=('SKIP')
 build() {
     mkdir -p build
     cd build
-    qmake "../LANDrop"
+    qmake "${srcdir}/${pkgname}/LANDrop"
     make
 }
 
