@@ -27,7 +27,7 @@ build() {
     mkdir -p build
     cd build
     qmake "${srcdir}/${pkgname}/LANDrop"
-    make
+    make -j$(nproc)
 }
 
 

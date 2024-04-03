@@ -1,3 +1,10 @@
+This fork of [LANDrop/LANDrop](https://github.com/LANDrop/LANDrop) adds support 
+for CLI arguments, including `--help`, `--version` and 
+`--no-startup-notification`.  Everything below this line was written by the 
+folks upstream.
+
+---
+
 <img src="LANDrop/icons/banner.png" width="300">
 
 ![Package](https://github.com/LANDrop/LANDrop/workflows/Package/badge.svg)
